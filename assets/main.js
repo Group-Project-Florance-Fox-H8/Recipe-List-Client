@@ -9,5 +9,7 @@ $(document).ready(function(){
     $('#link-register').on('click', () => {
       register()
     })
-
+    $('#btn-logout').on('click', () => {
+      logout()
+    })
   })

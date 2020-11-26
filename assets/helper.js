@@ -1,5 +1,8 @@
+let port = 'http://localhost:3000/'
+
 function loginPage(){
     $("#regist-page").hide()
+    $("#btn-logout").hide()
 }
 
 function register(){
@@ -11,7 +14,7 @@ function login() {
     const email = $("#loginEmail").val()
     const password = $("#loginPassword").val()
     $.ajax({
-        url : '',
+        url : port + 'login/',
         method : 'post',
         data : {
             email,
@@ -32,7 +35,7 @@ function signup(){
     const email = $("#registEmail").val()
     const password = $("#registPassword").val()
     $.ajax({
-        url : '',
+        url : port + 'signup/',
         method : 'post',
         data : {
             username,
@@ -42,6 +45,28 @@ function signup(){
     })
     .done(data => {
         console.log(data);
+    })
+    .fail(err => {
+        console.log(err)
+    })
+}
+
+function logout(){
+    localStorage.removeItem('access_token')
+}
+
+function fetchRecipe(){
+    $.ajax({
+        url : "",
+        method : "get",
+        headers : {
+            access_token : localStorage.getItem('access_token')
+        }
+    })
+    .done(data => {
+        data.forEach(recipe => {
+            $('#mainhome').append(``)
+        });
     })
     .fail(err => {
         console.log(err)
