@@ -2,22 +2,62 @@ let port = 'http://localhost:3000/'
 
 
 function restaurantPage() {
-    $('#main-page').hide()
+    $("#login-page").hide()
+    $("#regist-page").hide()
+    $("#list-page").hide()
+    $("#btn-logout").show()
+    $('#show-data-recipe').hide()
+    $('#my-recipe').hide()
+    $('#zomato-page').show()
+    $('#edammame-page').hide()
+    $('#meal-db-page').hide()
     showRestaurant()
 }
 
 function showRestaurant() {
     $.ajax({
-        url : port + "restaurants/",
-        method : "get",
+        url : port + "restaurants",
+        method : "GET",
         headers : {
             access_token : localStorage.getItem("access_token")
         }
     })
     .done(data => {
-        data.forEach(element => {
-            $('#').append(`
-            
+        $('#zomato-list').empty()
+        console.log(data.restaurants);
+        data.restaurants.forEach((e)=>{
+            $('#zomato-list').append(`
+                <div class = "col mb-4">
+                <div class="card" style="width: 20rem;">
+                <div class="card-header bg-secondary">
+                    <h5 class="card-title text-center">${e.restaurant.name}</h5>
+                </div>
+                <div class="card-body">
+                    
+                    <img src="${e.restaurant.featured_image}" style="height: 200px;" class="card-img-top" alt="...">
+                    <table class="table table-borderless">
+                    <th>Location</th>
+                    <td>${e.restaurant.location.address}</td>  
+                    </tr>
+                    <tr>
+                    <th>Cuisines</th>
+                    <td>${e.restaurant.cuisines}</td> 
+                    
+                    </tr>
+                    <tr>
+                    <th>Open Hours</th>
+                    <td>${e.restaurant.timings}</td>
+                    <!--   -->
+                    </tr>
+                    <tr>
+                    <th>Rating</th>
+                    <td>${e.restaurant.user_rating.aggregate_rating}</td>
+                    
+                    </tr>
+                </table>
+                </div>
+            </div>
+            </div>
             `)
         })
     })
@@ -26,6 +66,66 @@ function showRestaurant() {
     })
 }
 
+function healthyFoodPage(){
+    $("#login-page").hide()
+    $("#regist-page").hide()
+    $("#list-page").hide()
+    $("#btn-logout").show()
+    $('#show-data-recipe').hide()
+    $('#my-recipe').hide()
+    $('#zomato-page').hide()
+    $('#edammame-page').show()
+    $('#meal-db-page').hide()
+    fetchDataHealthyFood()
+}
+function fetchDataHealthyFood(){
+    $.ajax({
+        url : port + "recipes2",
+        method : "GET",
+        headers : {
+            access_token : localStorage.getItem("access_token")
+        }
+    })
+    .done(data =>{
+        console.log(data.hits);
+        $('#edammame-list').empty()
+        data.hits.forEach((e)=>{
+            $('#edammame-list').append(`
+                <div class = "col mb-4">
+                    <div class="card" style="width: 20rem;">
+                        <div class="card-header">
+                        <h5 class="card-title text-center">${e.recipe.label}</h5>
+                        </div>
+                        <div class="card-body">    
+                            <img src="${e.recipe.image}" style="height: 200px;" class="card-img-top" alt="...">
+                            <table class="table table-borderless">
+                                <th>Diet</th>
+                                <td>${e.recipe.dietlabels}</td>  
+                            </tr>
+                            <tr>
+                                <th>Health</th>
+                                <td>${e.recipe.healthlabels}</td> 
+                                
+                            </tr>
+                            <tr>
+                                <th>Ingredients</th>
+                                <td>${e.recipe.ingredientLines}</td>
+                                <!--   -->
+                            </tr>
+                            <tr>
+                                <th>Calories</th>
+                                <td>${e.recipe.calories}</td>
+                                
+                            </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `)
+        })
+    })
+    .fail(xhr => console.log(xhr))
+}
 function mainPage() {
     $("#login-page").hide()
     $("#regist-page").hide()
@@ -33,6 +133,10 @@ function mainPage() {
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
+    $('#zomato-page').hide()
+    $('#edammame-page').hide()
+    $('#meal-db-page').hide()
+    console.log(localStorage.getItem('access_token'));
 }
 
 function loginPage(){
@@ -60,7 +164,8 @@ function login() {
         }
     })
     .done(data => {
-        localStorage.setItem("access_token", data)
+        localStorage.setItem("access_token", data.access_token)
+        mainPage()
     })
     .fail(err => {
         console.log(err)
@@ -68,20 +173,19 @@ function login() {
 }
 
 function signup(){
-    // const username = $("#registUsername").val()
     const email = $("#registEmail").val()
     const password = $("#registPassword").val()
     $.ajax({
         url : port + 'register',
         method : 'post',
         data : {
-            // username,
             email,
             password
         }
     })
     .done(data => {
         console.log(data);
+        loginPage()
     })
     .fail(err => {
         console.log(err)

@@ -11,24 +11,26 @@ $(document).ready(function(){
     $('#btn-logout').on('click', () => {
       logout()
     })
-    $('#form-login').on('submit', () => {
-      mainPage()
+    $('#form-login').on('submit', (e) => {
+      e.preventDefault()
+      login()
     })
-    $('#form-regist').on('submit', () => {
-      loginPage()
+    $('#form-regist').on('submit', (e) => {
+      e.preventDefault()
+      signup()
     })
-    $('#findRestaurants').on('click', () => {
-      restaurantPage()
-    })
+    // $('#findRestaurants').on('click', () => {
+    //   restaurantPage()
+    // })
     // $('#showMyRecipe').on('click', () => {
     //   myrecipe()
     // })
-    $('#healthyFood').on('click', () => {
-      healthyFoodList()
-    })
-    $('#othersRecipe').on('click', () => {
-      otherRecipe()
-    })
+    // $('#healthyFood').on('click', () => {
+    //   healthyFoodList()
+    // })
+    // $('#othersRecipe').on('click', () => {
+    //   otherRecipe()
+    // })
     $('#form-create-recipe').on('submit', () => {
       myrecipe()
     })
