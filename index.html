@@ -85,128 +85,168 @@
 
     <!-- Main Page -->
     <div id="main-page">
-      <h1 class="text-center">Mau Masak Apa Hari Ini ?</h1>
-      
-      <div class="row my-5">
-        <div class="col-6">
-          <!-- Form Create Recipe -->
-          <div id="create-recipe">
-            <h1> Add Recipe List </h1>
-            <form id="form-create-recipe" class="my-5">
-              <div class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputName">
-                </div>
+      <h1 class="text-center my-5">Do You Want Cooking Today ?</h1>
+      <div class="row">
+        <div class="row row-cols-1 row-cols-md-4">
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://i.pinimg.com/564x/8d/ac/8a/8dac8aad4812b7ae83c853fc0a5f9054.jpg" style="height: 250px;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="">Find Restorant</a>
               </div>
-              <div class="form-group row">
-                <label for="inputIngredients" class="col-sm-2 col-form-label">Ingredients</label>
-                <div class="col-sm-10">
-                  <input type="textarea" class="form-control" id="inputIngredients">
-                </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://i.pinimg.com/564x/5d/80/58/5d80584c5a670535cb185a15a5e7b30b.jpg" class="card-img-top" alt="..." >
+              <div class="card-body">
+                <a href="">See My Recipe</a>
               </div>
-              <div class="form-group row">
-                <label for="inputSteps" class="col-sm-2 col-form-label">Steps</label>
-                <div class="col-sm-10">
-                  <input type="textarea" class="form-control" id="inputSteps">
-                </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://i.pinimg.com/564x/f4/d7/df/f4d7df26d163573828deab8ee59d51c2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="">See Healthy Food Recipe</a>
               </div>
-              <div class="form-group row">
-                <label for="inputPortion" class="col-sm-2 col-form-label">Portion</label>
-                <div class="col-sm-10">
-                  <input type="number" class="form-control" id="inputPortion">
-                </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://i.pinimg.com/564x/a7/96/23/a796235862a3b4c42a76a8e57da19922.jpg" style="height: 250px;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <a href="">See Other Recipe</a>
               </div>
-              <div class="form-group row">
-                <label for="inputCookingTime" class="col-sm-2 col-form-label">Cooking Time</label>
-                <div class="col-sm-10">
-                  <input type="number" class="form-control" id="inputCookingTime">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="inputType" class="col-sm-2 col-form-label">Type</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputType">
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-6">
-          <!-- Show Recipe List -->
-          <h1>Recipe List</h1>
-          <div id="recipe-list" data-spy="scroll" data-target="#create-recipe" data-offset= "0" class="row row-cols-1 row-cols-md-2 my-5">
-            <div class = "col mb-4">
-              <div class="card" style="width: 15rem;">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Name</h5>
+      <!-- My Recipe -->
+      <div class="container" id="my-recipe">
+        <h1 class="text-center"> My Recipe </h1>
+        <div class="row my-5">
+          <div class="col-6">
+            <!-- Form Create Recipe -->
+            <div id="create-recipe">
+              <h1> Add Recipe List </h1>
+              <form id="form-create-recipe" class="my-5">
+                <div class="form-group row">
+                  <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName">
+                  </div>
                 </div>
-                <table class="table table-borderless">
-                    <th>Cooking Time</th>
-                    <td>--- isi dari Cooking Time ---</td>
-                  </tr>
-                  <tr>
-                    <th>Type</th>
-                    <td>--- isi dari Type ---</td>
-                  </tr>
-                </table>
-                <div class="card-body">
-                  <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
-                  <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
+                <div class="form-group row">
+                  <label for="inputIngredients" class="col-sm-2 col-form-label">Ingredients</label>
+                  <div class="col-sm-10">
+                    <input type="textarea" class="form-control" id="inputIngredients">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputSteps" class="col-sm-2 col-form-label">Steps</label>
+                  <div class="col-sm-10">
+                    <input type="textarea" class="form-control" id="inputSteps">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPortion" class="col-sm-2 col-form-label">Portion</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputPortion">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputCookingTime" class="col-sm-2 col-form-label">Cooking Time</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputCookingTime">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputType" class="col-sm-2 col-form-label">Type</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputType">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+  
+          <div class="col-6">
+            <!-- Show Recipe List -->
+            <h1>Recipe List</h1>
+            <div id="recipe-list" data-spy="scroll" data-target="#create-recipe" data-offset= "0" class="row row-cols-1 row-cols-md-2 my-5">
+              <div class = "col mb-4">
+                <div class="card" style="width: 15rem;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Name</h5>
+                  </div>
+                  <table class="table table-borderless">
+                      <th>Cooking Time</th>
+                      <td>--- isi dari Cooking Time ---</td>
+                    </tr>
+                    <tr>
+                      <th>Type</th>
+                      <td>--- isi dari Type ---</td>
+                    </tr>
+                  </table>
+                  <div class="card-body">
+                    <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
+                    <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class = "col mb-4">
-              <div class="card" style="width: 15rem;">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Name</h5>
-                </div>
-                <table class="table table-borderless">
-                  <tr>
-                    <th>Cooking Time</th>
-                    <td>--- isi dari Cooking Time ---</td>
-                  </tr>
-                  <tr>
-                    <th>Type</th>
-                    <td>--- isi dari Type ---</td>
-                  </tr>
-                </table>
-                <div class="card-body">
-                  <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
-                  <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
-                </div>
-              </div>
-            </div>
-
-            <div class = "col mb-4">
-              <div class="card" style="width: 15rem;">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Name</h5>
-                </div>
-                <table class="table table-borderless">
-                  <tr>
-                    <th>Cooking Time</th>
-                    <td>--- isi dari Cooking Time ---</td>
-                  </tr>
-                  <tr>
-                    <th>Type</th>
-                    <td>--- isi dari Type ---</td>
-                  </tr>
-                </table>
-                <div class="card-body">
-                  <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
-                  <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
+  
+              <div class = "col mb-4">
+                <div class="card" style="width: 15rem;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Name</h5>
+                  </div>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Cooking Time</th>
+                      <td>--- isi dari Cooking Time ---</td>
+                    </tr>
+                    <tr>
+                      <th>Type</th>
+                      <td>--- isi dari Type ---</td>
+                    </tr>
+                  </table>
+                  <div class="card-body">
+                    <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
+                    <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
+                  </div>
                 </div>
               </div>
+  
+              <div class = "col mb-4">
+                <div class="card" style="width: 15rem;">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Name</h5>
+                  </div>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Cooking Time</th>
+                      <td>--- isi dari Cooking Time ---</td>
+                    </tr>
+                    <tr>
+                      <th>Type</th>
+                      <td>--- isi dari Type ---</td>
+                    </tr>
+                  </table>
+                  <div class="card-body">
+                    <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
+                    <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
+                  </div>
+                </div>
+              </div>
+  
             </div>
-
           </div>
         </div>
       </div>
@@ -248,7 +288,7 @@
         </div>   
       </div>
 
-      
+
     </div>
   </div>
 
