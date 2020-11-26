@@ -224,9 +224,19 @@ function login() {
     .done(data => {
         localStorage.setItem("access_token", data.access_token)
         mainPage()
+        Swal.fire(
+            'Welcome!',
+            'Welcome to the Recipe App',
+            'success'
+        )
     })
     .fail(err => {
         console.log(err)
+        Swal.fire(
+            'Error!!!',
+            'Wrong email/password',
+            'error'
+        )
     })
 }
 
@@ -244,9 +254,19 @@ function signup(){
     .done(data => {
         console.log(data);
         loginPage()
+        Swal.fire(
+            'Good job!',
+            'Welcome to the recipe App',
+            'success'
+        )
     })
     .fail(err => {
         console.log(err)
+        Swal.fire(
+            'Error!!!',
+            'Password must be more than 6 characters',
+            'error'
+        )
     })
 }
 
@@ -406,16 +426,24 @@ function onSignIn(googleUser) {
     var google_access_token = googleUser.getAuthResponse().id_token
     $.ajax({
         method: 'POST',
-        url: baseURL + '/loginGoogle',
+        url: port + 'loginGoogle',
         data: {google_access_token}
     })
     .done(res => {
         localStorage.setItem('access_token', res.access_token)
-        $('#emaillogin').val('')
-        $('#passwordlogin').val('')
-        checkauth()
+        mainPage()
+        Swal.fire(
+            'Welcome!',
+            'Welcome to the Recipe App',
+            'success'
+        )
     })
     .fail(err => {
         console.log(err)
+        Swal.fire(
+            'Error!!!',
+            'Wrong email/password',
+            'error'
+        )
     })
 }
