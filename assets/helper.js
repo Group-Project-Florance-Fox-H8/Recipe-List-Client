@@ -53,6 +53,10 @@ function signup(){
 
 function logout(){
     localStorage.removeItem('access_token')
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
 }
 
 function fetchRecipe(){
@@ -67,6 +71,24 @@ function fetchRecipe(){
         data.forEach(recipe => {
             $('#mainhome').append(``)
         });
+    })
+    .fail(err => {
+        console.log(err)
+    })
+}
+
+function onSignIn(googleUser) {
+    var google_access_token = googleUser.getAuthResponse().id_token
+    $.ajax({
+        method: 'POST',
+        url: baseURL + '/loginGoogle',
+        data: {google_access_token}
+    })
+    .done(res => {
+        localStorage.setItem('access_token', res.access_token)
+        $('#emaillogin').val('')
+        $('#passwordlogin').val('')
+        checkauth()
     })
     .fail(err => {
         console.log(err)

@@ -4,7 +4,6 @@ $(document).ready(function(){
     } else {
       mainPage()
     }
-    
 
     $('#link-register').on('click', () => {
       register()
