@@ -31,14 +31,14 @@ function login() {
 }
 
 function signup(){
-    const username = $("#registUsername").val()
+    // const username = $("#registUsername").val()
     const email = $("#registEmail").val()
     const password = $("#registPassword").val()
     $.ajax({
         url : port + 'signup/',
         method : 'post',
         data : {
-            username,
+            // username,
             email,
             password
         }
