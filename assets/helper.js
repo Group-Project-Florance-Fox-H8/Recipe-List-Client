@@ -440,10 +440,5 @@ function onSignIn(googleUser) {
     })
     .fail(err => {
         console.log(err)
-        Swal.fire(
-            'Error!!!',
-            'Wrong email/password',
-            'error'
-        )
     })
 }
