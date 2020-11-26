@@ -1,6 +1,6 @@
 let port = 'http://localhost:3000/'
 
-
+// ---- Restaurant from Zomato
 function restaurantPage() {
     $("#login-page").hide()
     $("#regist-page").hide()
@@ -13,7 +13,6 @@ function restaurantPage() {
     $('#meal-db-page').hide()
     showRestaurant()
 }
-
 function showRestaurant() {
     $.ajax({
         url : port + "restaurants",
@@ -66,6 +65,7 @@ function showRestaurant() {
     })
 }
 
+//---- HealthyFood from Edammam
 function healthyFoodPage(){
     $("#login-page").hide()
     $("#regist-page").hide()
@@ -126,6 +126,64 @@ function fetchDataHealthyFood(){
     })
     .fail(xhr => console.log(xhr))
 }
+
+//--- Others Recipe from MealDB
+function othersRecipePage(){
+    $("#login-page").hide()
+    $("#regist-page").hide()
+    $("#list-page").hide()
+    $("#btn-logout").show()
+    $('#show-data-recipe').hide()
+    $('#my-recipe').hide()
+    $('#zomato-page').hide()
+    $('#edammame-page').hide()
+    $('#meal-db-page').show()
+    fetchDataOthersRecipe()
+}
+function fetchDataOthersRecipe(){
+    $.ajax({
+        url : port + "recipes1",
+        method : "GET",
+        headers : {
+            access_token : localStorage.getItem("access_token")
+        }
+    })
+    .done(data => {
+        console.log(data.meals[0]);
+        $('#meal-db-list').append(`
+        <div class = "col mb-4">
+        <div class="card" >
+        <div class="card-header">
+            <h5 class="card-title text-center">${data.meals[0].strMeal}</h5>
+        </div>
+        <div class="card-body">
+        
+            <img src="${data.meals[0].strMealThumb}" style="height: 400px;" class="card-img-top" alt="...">
+            <table class="table table-borderless">
+                <tr>
+                    <th>Ingredients</th>
+                    <td>${data.meals[0].strIngredient1}</td> 
+                </tr>
+                <tr>
+                <th>Instructions</th>
+                <td>${data.meals[0].strInstructions}</td> 
+                </tr>
+            </table>
+        </div>
+
+          <div class="card-footer">
+            <a class="btn mr-sm-2 btn-primary"  tabindex="-1" aria-disabled="true" id="btn-meal" onclick="othersRecipePage()">Other Recipe</a>
+          </div>
+        </div>
+      </div>
+
+        
+        `)
+    })
+    .fail(xhr => console.log(xhr))
+}
+
+
 function mainPage() {
     $("#login-page").hide()
     $("#regist-page").hide()
