@@ -119,7 +119,7 @@
               <div class="card h-100">
                 <img src="https://i.pinimg.com/564x/a7/96/23/a796235862a3b4c42a76a8e57da19922.jpg" style="height: 250px;" class="card-img-top" alt="...">
                 <div class="card-body mx-auto">
-                  <button class="btn btn-light" onclick="otherRecipe()" id="othersRecipe"><h5>Other Recipe</h5></button>
+                  <button class="btn btn-light" onclick="othersRecipePage()" id="othersRecipe"><h5>Other Recipe</h5></button>
                   <!-- <a href="" id="othersRecipe"> <h5 class="text-center">Other Recipe</h5></a> -->
                 </div>
               </div>
@@ -324,33 +324,9 @@
     <div class="container" id="meal-db-page">
       <h1 class="text-center my-5">Others Recipe</h1>
       <!-- List Meal DB -->
-      <div id="edammame-list" class="row my-5">
+      <div class="row my-5 row-cols-1 row-cols-md-2" id="meal-db-list">
         <!-- Looping Meal DB disini -->
-        <div class = "col mr-sm-2">
-          <div class="card" >
-            <div class="card-header">
-              <h5 class="card-title text-center">${strMeal}</h5>
-            </div>
-            <div class="card-body">
-              <!-- ${strMealThumb} -->
-              <img src="https://i.pinimg.com/564x/8d/ac/8a/8dac8aad4812b7ae83c853fc0a5f9054.jpg" style="height: 400px;" class="card-img-top" alt="...">
-              <table class="table table-borderless">
-                <tr>
-                  <th>Ingredients</th>
-                  <td>--- Ingredients ---</td> 
-                  <!-- ${strIngredients} -->
-                </tr>
-                <tr>
-                <th>Instructions</th>
-                <td>--instructions--</td> <!-- ${strInstructions} --> 
-              </tr>
-            </table>
-            </div>
-            <div class="card-footer">
-              <a class="btn mr-sm-2 btn-primary"  tabindex="-1" aria-disabled="true" id="btn-meal" onclick="mealDB()">Other Recipe</a>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>
 
