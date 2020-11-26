@@ -1,6 +1,8 @@
 $(document).ready(function(){
     if(!localStorage.getItem('access_token')){
       loginPage()
+      $("#home-nav").hide()
+      $("#restorant-nav").hide()
     } else {
       mainPage()
     }
