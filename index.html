@@ -16,10 +16,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" onclick="">Home</a>
+          <a class="nav-link" onclick="mainPage()">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" onclick="">See Restorants</a>
+          <a class="nav-link" onclick="showRestaurant()">See Restorants</a>
         </li>
       </ul>
       <a class="btn btn-logout mr-sm-2"  tabindex="-1" aria-disabled="true" id="btn-logout" onclick="logout()">Logout</a>
@@ -92,7 +92,7 @@
             <div class="card h-100">
               <img src="https://i.pinimg.com/564x/8d/ac/8a/8dac8aad4812b7ae83c853fc0a5f9054.jpg" style="height: 250px;" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href=""> <h5 class="text-center">Find Restorant</h5></a>
+                <a href="" id="findRestaurants"> <h5 class="text-center">Find Restorant</h5></a>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
             <div class="card h-100">
               <img src="https://i.pinimg.com/564x/5d/80/58/5d80584c5a670535cb185a15a5e7b30b.jpg" class="card-img-top" alt="..." >
               <div class="card-body">
-                <a href=""> <h5 class="text-center">My Recipe</h5></a>
+                <a href="" id="showMyRecipe" onclick="myrecipe()"> <h5 class="text-center">My Recipe</h5></a>
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@
             <div class="card h-100">
               <img src="https://i.pinimg.com/564x/f4/d7/df/f4d7df26d163573828deab8ee59d51c2.jpg" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href=""> <h5 class="text-center">Healthy Food Recipe</h5></a>
+                <a href="" id="healthyFood"> <h5 class="text-center">Healthy Food Recipe</h5></a>
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@
             <div class="card h-100">
               <img src="https://i.pinimg.com/564x/a7/96/23/a796235862a3b4c42a76a8e57da19922.jpg" style="height: 250px;" class="card-img-top" alt="...">
               <div class="card-body">
-                <a href=""> <h5 class="text-center">Other Recipe</h5></a>
+                <a href="" id="othersRecipe"> <h5 class="text-center">Other Recipe</h5></a>
               </div>
             </div>
           </div>
@@ -180,72 +180,7 @@
           <div class="col-6">
             <!-- Show Recipe List -->
             <h1>Recipe List</h1>
-            <div id="recipe-list" data-spy="scroll" data-target="#create-recipe" data-offset= "0" class="row row-cols-1 row-cols-md-2 my-5">
-              <div class = "col mb-4">
-                <div class="card" style="width: 15rem;">
-                  <div class="card-body">
-                    <h5 class="card-title text-center">Name</h5>
-                  </div>
-                  <table class="table table-borderless">
-                      <th>Cooking Time</th>
-                      <td>--- isi dari Cooking Time ---</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>--- isi dari Type ---</td>
-                    </tr>
-                  </table>
-                  <div class="card-body">
-                    <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
-                    <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
-                  </div>
-                </div>
-              </div>
-  
-              <div class = "col mb-4">
-                <div class="card" style="width: 15rem;">
-                  <div class="card-body">
-                    <h5 class="card-title text-center">Name</h5>
-                  </div>
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Cooking Time</th>
-                      <td>--- isi dari Cooking Time ---</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>--- isi dari Type ---</td>
-                    </tr>
-                  </table>
-                  <div class="card-body">
-                    <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
-                    <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
-                  </div>
-                </div>
-              </div>
-  
-              <div class = "col mb-4">
-                <div class="card" style="width: 15rem;">
-                  <div class="card-body">
-                    <h5 class="card-title text-center">Name</h5>
-                  </div>
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Cooking Time</th>
-                      <td>--- isi dari Cooking Time ---</td>
-                    </tr>
-                    <tr>
-                      <th>Type</th>
-                      <td>--- isi dari Type ---</td>
-                    </tr>
-                  </table>
-                  <div class="card-body">
-                    <a class="btn btn-primary" href="#" id="btn-show" onclick = "">Show</a>
-                    <a class="btn btn-danger" href="#" id="btn-delete" onclick = "">Delete</a>
-                  </div>
-                </div>
-              </div>
-  
+            <div id="recipe-list" data-spy="scroll" data-target="#create-recipe" data-offset= "0" class="row row-cols-1 row-cols-md-2 my-5"> 
             </div>
           </div>
         </div>
