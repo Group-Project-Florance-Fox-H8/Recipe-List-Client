@@ -154,6 +154,12 @@ function fetchDataOthersRecipe(){
         }
     })
     .done(data => {
+        let dataMeal = data.meals[0]
+        let ingredients = []
+        for(const key in dataMeal){
+            if(key.includes('strIngredient') && dataMeal[key]) ingredients.push(dataMeal[key])
+        }
+        console.log(ingredients.join(', '), '<<< hasil ingredients');
         console.log(data.meals[0]);
         $('#meal-db-list').append(`
         <div class = "col mb-4">
@@ -162,16 +168,15 @@ function fetchDataOthersRecipe(){
             <h5 class="card-title text-center">${data.meals[0].strMeal}</h5>
         </div>
         <div class="card-body">
-        
             <img src="${data.meals[0].strMealThumb}" style="height: 400px;" class="card-img-top" alt="...">
             <table class="table table-borderless">
                 <tr>
                     <th>Ingredients</th>
-                    <td>${data.meals[0].strIngredient1}</td> 
+                    <td>${ingredients.join(', ')}</td> 
                 </tr>
                 <tr>
-                <th>Instructions</th>
-                <td>${data.meals[0].strInstructions}</td> 
+                  <th>Instructions</th>
+                  <td>${data.meals[0].strInstructions}</td> 
                 </tr>
             </table>
         </div>
