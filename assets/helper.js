@@ -195,7 +195,7 @@ function fetchDataOthersRecipe(){
 
 
 function mainPage() {
-    $("#login-page").hide()
+    $("#login-page").hide(); $("#main-page").show();
     $("#regist-page").hide()
     $('#list-page').show()
     $("#btn-logout").show()
@@ -203,8 +203,8 @@ function mainPage() {
     $('#my-recipe').hide()
     $('#zomato-page').hide()
     $('#edammame-page').hide()
-    $('#meal-db-page').hide(); $('#home-nav').show()
-    console.log(localStorage.getItem('access_token'));
+    $('#meal-db-page').hide(); $('#home-nav').show(); 
+    // console.log(localStorage.getItem('access_token'));
 }
 
 function loginPage(){
