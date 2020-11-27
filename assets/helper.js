@@ -4,7 +4,7 @@ let port = 'http://localhost:3000/'
 function restaurantPage() {
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").show()
+    $("#list-page").hide()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -69,7 +69,7 @@ function showRestaurant() {
 function healthyFoodPage(){
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").show()
+    $("#list-page").hide()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -136,7 +136,7 @@ function fetchDataHealthyFood(){
 function othersRecipePage(){
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").show()
+    $("#list-page").hide()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -192,7 +192,7 @@ function fetchDataOthersRecipe(){
 function mainPage() {
     $("#login-page").hide()
     $("#regist-page").hide()
-    $('#main-page').show()
+    $('#list-page').show()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -261,7 +261,7 @@ function signup(){
         loginPage()
         Swal.fire(
             'Good job!',
-            'Welcome to the recipe App',
+            'Please log in!',
             'success'
         )
     })
@@ -291,14 +291,14 @@ function logout(){
 function myRecipePage(){
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").show()
+    $("#list-page").hide()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').show()
     $('#zomato-page').hide()
     $('#edammame-page').hide()
     $('#meal-db-page').hide()
-    $('#show-data-recipe').hide()
+    // $('#show-data-recipe').hide()
     fetchRecipe()
 }
 function fetchRecipe(){
@@ -328,8 +328,8 @@ function fetchRecipe(){
                     </tr>
                   </table>
                   <div class="card-body">
-                    <a class="btn btn-primary" id="btn-show" onclick = "recipeById(${recipe.id})">Show</a>
-                    <a class="btn btn-danger" id="btn-delete" onclick = "deleteRecipe(${recipe.id})">Delete</a>
+                    <button type="button" class="btn btn-primary" id="btn-show" onclick = "recipeById(${recipe.id})">Show</button>
+                    <button type="button" class="btn btn-danger" id="btn-delete" onclick = "deleteRecipe(${recipe.id})">Delete</button>
                   </div>
                 </div>
               </div>
@@ -388,8 +388,8 @@ function deleteRecipe(id){
             access_token : localStorage.getItem('access_token')
         } 
     })
-    ,done(data => {
-        myRecipePage()
+    .done(data => {
+       myRecipePage();
     })
     .fail(err => {
         console.log(err);
@@ -398,7 +398,7 @@ function deleteRecipe(id){
 
 function recipeById(id) {
     myRecipePage()
-    $('#container-create-show').hide()
+    // $('#container-create-show').hide()
     $('#show-data-recipe').show()
     $.ajax({
         url : port + "recipes/" + id,
@@ -438,9 +438,6 @@ function recipeById(id) {
                     </tr>
                     </table>
                 </div>
-                <div class="card-footer">
-                    <button class= "btn btn-primary" onclick="myRecipePage()" > Back To My Recipe</button>
-                </div>  
             </div>   
         `) 
     })
