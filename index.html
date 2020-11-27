@@ -20,10 +20,10 @@
           <a class="nav-link" onclick="mainPage()" id="home-nav">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" onclick="showRestaurant()" id="restorant-nav">See Restorants</a>
+          <a class="nav-link" onclick="showRestaurant()" id="restorant-nav">Find Restaurants</a>
         </li>
       </ul>
-      <a class="btn btn-logout mr-sm-2"  tabindex="-1" aria-disabled="true" id="btn-logout" onclick="logout()">Logout</a>
+      <a class="btn btn-logout mr-sm-2"  tabindex="-1" aria-disabled="true" id="btn-logout" onclick="logout()">Log out</a>
     </div>
   </nav>
 
@@ -52,7 +52,7 @@
       </form>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <br>
-      <a id="link-register">Haven't account? Please Regist Now!</a>
+      <button class="btn btn-secondary" type="button" id="link-register">Don't have an account? Please Register Now!</button>
     </div>
 
     <!-- Form Register -->
@@ -87,7 +87,7 @@
 
     <!-- Main Page -->
     <div id="main-page">
-      <h1 class="text-center my-5">Do You Want Cooking Today ?</h1>
+      <h1 class="text-center my-5">Feel Like Cooking Today?</h1>
       <div id="list-page">
         <div class="row">
           <div class="row row-cols-1 row-cols-md-4">
