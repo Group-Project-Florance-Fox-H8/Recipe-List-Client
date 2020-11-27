@@ -292,9 +292,6 @@ function logout(){
     });
 }
 
-
-
-
 // ---- My Recipe
 function myRecipePage(){
     $("#login-page").hide()
