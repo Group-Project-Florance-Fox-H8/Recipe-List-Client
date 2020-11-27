@@ -198,14 +198,14 @@ function mainPage() {
     $('#my-recipe').hide()
     $('#zomato-page').hide()
     $('#edammame-page').hide()
-    $('#meal-db-page').hide()
+    $('#meal-db-page').hide(); $('#home-nav').show()
     console.log(localStorage.getItem('access_token'));
 }
 
 function loginPage(){
-    $("#regist-page").hide()
+    $("#regist-page").hide(); $("#login-page").show();
     $("#btn-logout").hide()
-    $('#main-page').hide()
+    $('#main-page').hide(); $('#home-nav').hide();
 }
 
 function register(){
@@ -276,7 +276,8 @@ function signup(){
 }
 
 function logout(){
-    localStorage.removeItem('access_token')
+    localStorage.clear()
+    loginPage()
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
