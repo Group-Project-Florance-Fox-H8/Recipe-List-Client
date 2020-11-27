@@ -203,14 +203,22 @@ function mainPage() {
     $('#my-recipe').hide()
     $('#zomato-page').hide()
     $('#edammame-page').hide()
+<<<<<<< HEAD
     $('#meal-db-page').hide(); $('#home-nav').show(); 
     // console.log(localStorage.getItem('access_token'));
+=======
+    $('#meal-db-page').hide()
+    $('#home-nav').show()
+    console.log(localStorage.getItem('access_token'));
+>>>>>>> 15fde799a7ff11c5383a72d2b7b9d46c36be9728
 }
 
 function loginPage(){
-    $("#regist-page").hide(); $("#login-page").show();
+    $("#regist-page").hide()
+    $("#login-page").show()
     $("#btn-logout").hide()
-    $('#main-page').hide(); $('#home-nav').hide();
+    $('#main-page').hide()
+    $('#home-nav').hide()
 }
 
 function register(){
@@ -244,7 +252,7 @@ function login() {
         console.log(err)
         Swal.fire(
             'Error!!!',
-            'Wrong email/password',
+            err.responseJSON.msg,
             'error'
         )
     })
@@ -274,7 +282,7 @@ function signup(){
         console.log(err)
         Swal.fire(
             'Error!!!',
-            'Password must be more than 6 characters',
+            err.responseJSON.msg,
             'error'
         )
     })
@@ -288,9 +296,6 @@ function logout(){
         console.log('User signed out.');
     });
 }
-
-
-
 
 // ---- My Recipe
 function myRecipePage(){
@@ -343,6 +348,11 @@ function fetchRecipe(){
     })
     .fail(err => {
         console.log(err)
+        Swal.fire(
+            'Error!!!',
+            err.responseJSON.msg,
+            'error'
+        )
     })
 }
 
@@ -370,9 +380,19 @@ function createRecipe() {
     })
     .done(data => {
         myRecipePage()
+        Swal.fire(
+            'Added!',
+            'Your new recipe has been added!',
+            'success'
+        )
     })
     .fail(err => {
         console.log(err);
+        Swal.fire(
+            'Error!!!',
+            err.responseJSON.msg,
+            'error'
+        )
     })
     .always(_ =>{
         // $('#create-recipe').trigger('reset')
@@ -395,9 +415,19 @@ function deleteRecipe(id){
     })
     .done(data => {
        myRecipePage();
+       Swal.fire(
+        'Deleted!',
+        'Your recipe has been deleted!',
+        'success'
+        )
     })
     .fail(err => {
         console.log(err);
+        Swal.fire(
+            'Error!!!',
+            err.responseJSON.msg,
+            'error'
+        )
     })
 }
 
@@ -448,6 +478,11 @@ function recipeById(id) {
     })
     .fail(err => {
         console.log(err)
+        Swal.fire(
+            'Error!!!',
+            err.responseJSON.msg,
+            'error'
+        )
     })
 }
 
@@ -469,5 +504,10 @@ function onSignIn(googleUser) {
     })
     .fail(err => {
         console.log(err)
+        Swal.fire(
+            'Error!!!',
+            err.responseJSON.msg,
+            'error'
+        )
     })
 }
