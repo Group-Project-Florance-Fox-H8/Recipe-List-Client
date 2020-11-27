@@ -175,8 +175,8 @@ function fetchDataOthersRecipe(){
                     <td>${ingredients.join(', ')}</td> 
                 </tr>
                 <tr>
-                <th>Instructions</th>
-                <td>${data.meals[0].strInstructions}</td> 
+                  <th>Instructions</th>
+                  <td>${data.meals[0].strInstructions}</td> 
                 </tr>
             </table>
         </div>
