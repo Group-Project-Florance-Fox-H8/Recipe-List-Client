@@ -33,8 +33,13 @@ $(document).ready(function(){
     // $('#othersRecipe').on('click', () => {
     //   otherRecipe()
     // })
-    $('#form-create-recipe').on('submit', () => {
-      myrecipe()
+    $('#form-create-recipe').on('submit', (e) => {
+      e.preventDefault()
+      createRecipe()
+    })
+    $('#form-search-edamamme').on('submit', (e)=>{
+      e.preventDefault()
+      fetchDataHealthyFood()
     })
     // $('#othersRecipe').on('click', () => {
     //   otherRecipe()

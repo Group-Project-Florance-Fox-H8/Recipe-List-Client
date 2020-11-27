@@ -4,7 +4,7 @@ let port = 'http://localhost:3000/'
 function restaurantPage() {
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").hide()
+    $("#list-page").show()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -69,7 +69,7 @@ function showRestaurant() {
 function healthyFoodPage(){
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").hide()
+    $("#list-page").show()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -79,11 +79,15 @@ function healthyFoodPage(){
     fetchDataHealthyFood()
 }
 function fetchDataHealthyFood(){
+    const food = $('#searchFood').val()
     $.ajax({
-        url : port + "recipes2",
-        method : "GET",
+        url : port + "edamam",
+        method : "POST",
         headers : {
             access_token : localStorage.getItem("access_token")
+        },
+        data:{
+            food
         }
     })
     .done(data =>{
@@ -93,18 +97,18 @@ function fetchDataHealthyFood(){
             $('#edammame-list').append(`
                 <div class = "col mb-4">
                     <div class="card" style="width: 20rem;">
-                        <div class="card-header">
+                        <div class="card-header bg-secondary">
                         <h5 class="card-title text-center">${e.recipe.label}</h5>
                         </div>
                         <div class="card-body">    
                             <img src="${e.recipe.image}" style="height: 200px;" class="card-img-top" alt="...">
                             <table class="table table-borderless">
                                 <th>Diet</th>
-                                <td>${e.recipe.dietlabels}</td>  
+                                <td>${e.recipe.dietLabels}</td>  
                             </tr>
                             <tr>
                                 <th>Health</th>
-                                <td>${e.recipe.healthlabels}</td> 
+                                <td>${e.recipe.healthLabels}</td> 
                                 
                             </tr>
                             <tr>
@@ -125,13 +129,14 @@ function fetchDataHealthyFood(){
         })
     })
     .fail(xhr => console.log(xhr))
+    .always(_ => $('#searchFood').val(""))
 }
 
 //--- Others Recipe from MealDB
 function othersRecipePage(){
     $("#login-page").hide()
     $("#regist-page").hide()
-    $("#list-page").hide()
+    $("#list-page").show()
     $("#btn-logout").show()
     $('#show-data-recipe').hide()
     $('#my-recipe').hide()
@@ -142,7 +147,7 @@ function othersRecipePage(){
 }
 function fetchDataOthersRecipe(){
     $.ajax({
-        url : port + "recipes1",
+        url : port + "mealDB",
         method : "GET",
         headers : {
             access_token : localStorage.getItem("access_token")
@@ -153,7 +158,7 @@ function fetchDataOthersRecipe(){
         $('#meal-db-list').append(`
         <div class = "col mb-4">
         <div class="card" >
-        <div class="card-header">
+        <div class="card-header bg-info">
             <h5 class="card-title text-center">${data.meals[0].strMeal}</h5>
         </div>
         <div class="card-body">
@@ -278,6 +283,23 @@ function logout(){
     });
 }
 
+
+
+
+// ---- My Recipe
+function myRecipePage(){
+    $("#login-page").hide()
+    $("#regist-page").hide()
+    $("#list-page").show()
+    $("#btn-logout").show()
+    $('#show-data-recipe').hide()
+    $('#my-recipe').show()
+    $('#zomato-page').hide()
+    $('#edammame-page').hide()
+    $('#meal-db-page').hide()
+    $('#show-data-recipe').hide()
+    fetchRecipe()
+}
 function fetchRecipe(){
     $.ajax({
         url : port + "recipes",
@@ -287,8 +309,9 @@ function fetchRecipe(){
         }
     })
     .done(data => {
+        $('#recipe-list').empty()
         data.forEach(recipe => {
-            $('#mainhome').append(`
+            $('#recipe-list').append(`
             <div class = "col mb-4">
                 <div class="card" style="width: 15rem;">
                   <div class="card-body">
@@ -317,6 +340,45 @@ function fetchRecipe(){
     })
 }
 
+function createRecipe() {
+    const name = $('#inputName').val()
+    const ingredients = $('#inputIngredients').val()
+    const steps = $('#inputSteps').val()
+    const portion = $('#inputPortion').val()
+    const cooking_time = $('#inputCookingTime').val()
+    const type = $('#inputType').val()
+    $.ajax({
+        url : port + 'recipes',
+        method : 'POST',
+        data : {
+            name,
+            ingredients,
+            steps,
+            portion,
+            cooking_time,
+            type
+        },
+        headers : {
+            access_token : localStorage.getItem('access_token')
+        }
+    })
+    .done(data => {
+        myRecipePage()
+    })
+    .fail(err => {
+        console.log(err);
+    })
+    .always(_ =>{
+        // $('#create-recipe').trigger('reset')
+        const name = $('#inputName').val("")
+        const ingredients = $('#inputIngredients').val("")
+        const steps = $('#inputSteps').val("")
+        const portion = $('#inputPortion').val("")
+        const cooking_time = $('#inputCookingTime').val("")
+        const type = $('#inputType').val("")
+    })
+}
+
 function deleteRecipe(id){
     $.ajax({
         url : port + "recipes/" + id,
@@ -326,54 +388,17 @@ function deleteRecipe(id){
         } 
     })
     ,done(data => {
-        myrecipe()
+        myRecipePage()
     })
     .fail(err => {
         console.log(err);
     })
 }
-
-function myrecipe() {
-    $('#main-page').hide()
-    $("#my-recipe").show()
-    // fetchRecipe()
-}
-
-function createRecipe() {
-    const name = $('#inputName').val()
-    const ingredients = $('#inputIngredients').val()
-    const steps = $('#inputSteps').val()
-    const portion = $('#inputPortion').val()
-    const cooking_time = $('#inputCookingTime').val()
-    const type = $('inputType').val()
-    $.ajax({
-        url : port + 'recipes',
-        method : 'post',
-        data : {
-            name,
-            ingredients,
-            steps,
-            portion,
-            cooking_time,
-            type
-        }
-    })
-    .done(data => {
-        myrecipe()
-    })
-    .fail(err => {
-        console.log(err);
-    })
-}
-
-function showRecipe(){
-    $('#main-page').hide()
-    $('#show-data-recipe').show()
-    recipeById()
-}
-
 
 function recipeById(id) {
+    myRecipePage()
+    $('#container-create-show').hide()
+    $('#show-data-recipe').show()
     $.ajax({
         url : port + "recipes/" + id,
         method : "get",
@@ -382,40 +407,41 @@ function recipeById(id) {
         }
     })
     .done(data => {
-       $('#show-data-recipe').append(`
-       <div class="card">
-       <div class="card-title text-center"> 
-         <h1> ${data.name} </h1> 
-       </div>
-       <div class="card-body">
-         <table class="table table-borderless">
-           <tr>
-             <th>Ingredients</th>
-             <td>${data.ingredients}</td>
-           </tr>
-           <tr>
-             <th>Steps</th>
-             <td>${data.steps}</td>
-           </tr>
-           <tr>
-             <th>Portion</th>
-             <td>${data.portion}</td>
-           </tr>
-           <tr>
-             <th>Cooking Time</th>
-             <td>${data.cooking_time}</td>
-           </tr>
-           <tr>
-             <th>Type</th>
-             <td>${data.type}</td>
-           </tr>
-         </table>
-       </div>
-       <div class="card-footer">
-         <a class="btn btn-primary" id="btn-back" onclick ="mainPage()">Back To Home</a>
-       </div>  
-     </div>   
-    `) 
+        $('#show-data-recipe').empty()
+        $('#show-data-recipe').append(`
+            <div class="card">
+                <div class="card-title text-center text-danger"> 
+                    <h1> ${data.name} </h1> 
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                    <tr>
+                        <th>Ingredients</th>
+                        <td>${data.ingredients}</td>
+                    </tr>
+                    <tr>
+                        <th>Steps</th>
+                        <td>${data.steps}</td>
+                    </tr>
+                    <tr>
+                        <th>Portion</th>
+                        <td>${data.portion}</td>
+                    </tr>
+                    <tr>
+                        <th>Cooking Time</th>
+                        <td>${data.cooking_time}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>${data.type}</td>
+                    </tr>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <button class= "btn btn-primary" onclick="myRecipePage()" > Back To My Recipe</button>
+                </div>  
+            </div>   
+        `) 
     })
     .fail(err => {
         console.log(err)

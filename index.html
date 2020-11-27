@@ -103,7 +103,7 @@
               <div class="card h-100">
                 <img src="https://i.pinimg.com/564x/5d/80/58/5d80584c5a670535cb185a15a5e7b30b.jpg" class="card-img-top" alt="..." >
                 <div class="card-body mx-auto">
-                  <button class="btn btn-light" onclick="myrecipe()" id="showMyRecipe"><h5 class="text-center">My Recipe</h5></button>
+                  <button class="btn btn-light" onclick="myRecipePage()" id="showMyRecipe"><h5 class="text-center">My Recipe</h5></button>
                   <!-- <a href="" id="showMyRecipe" onclick="myrecipe()"> <h5 class="text-center">My Recipe</h5></a> -->
                 </div>
               </div>
@@ -133,11 +133,11 @@
       <!-- My Recipe -->
       <div class="container" id="my-recipe">
         <h1 class="text-center"> My Recipe </h1>
-        <div class="row my-5">
+        <div class="row my-5" id="container-create-show">
           <div class="col-6">
             <!-- Form Create Recipe -->
             <div id="create-recipe">
-              <h1> Add Recipe List </h1>
+              <h2 class="text-center text-primary"> Add Recipe List </h2>
               <form id="form-create-recipe" class="my-5">
                 <div class="form-group row">
                   <label for="inputName" class="col-sm-2 col-form-label">Name</label>
@@ -166,7 +166,7 @@
                 <div class="form-group row">
                   <label for="inputCookingTime" class="col-sm-2 col-form-label">Cooking Time</label>
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" id="inputCookingTime">
+                    <input type="text" class="form-control" id="inputCookingTime">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -186,7 +186,7 @@
   
           <div class="col-6">
             <!-- Show Recipe List -->
-            <h1>Recipe List</h1>
+            <h2 class="text-center text-danger">Recipe List</h2>
             <div id="recipe-list" data-spy="scroll" data-target="#create-recipe" data-offset= "0" class="row row-cols-1 row-cols-md-2 my-5"> 
             </div>
           </div>
@@ -194,7 +194,7 @@
 
         <!-- Show Recipe Data -->
         <!-- Nanti disini ngeshow data by id ya -->
-        <div class="" id="#show-data-recipe">
+        <div class="my-5" id="show-data-recipe">
           <div class="card">
             <div class="card-title text-center"> 
               <h1> Name </h1> 
@@ -309,7 +309,7 @@
       <form class="form-inline my-2" id="form-search-edamamme">
         <label for="searchFood" class="col-sm-2" >Search Food </label>
         <div class="col-sm-6">
-          <input class="form-control mr-sm-2" name="searchFood" type="search" placeholder="e.g. Beef" aria-label="Search">
+          <input class="form-control mr-sm-2" id="searchFood" name="searchFood" type="search" placeholder="e.g. Beef" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </div>
       </form>
