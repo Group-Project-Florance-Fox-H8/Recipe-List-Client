@@ -203,14 +203,9 @@ function mainPage() {
     $('#my-recipe').hide()
     $('#zomato-page').hide()
     $('#edammame-page').hide()
-<<<<<<< HEAD
-    $('#meal-db-page').hide(); $('#home-nav').show(); 
-    // console.log(localStorage.getItem('access_token'));
-=======
     $('#meal-db-page').hide()
     $('#home-nav').show()
     console.log(localStorage.getItem('access_token'));
->>>>>>> 15fde799a7ff11c5383a72d2b7b9d46c36be9728
 }
 
 function loginPage(){
